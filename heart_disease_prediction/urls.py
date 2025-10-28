@@ -14,8 +14,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
-from django.conf.urls import url,include
+from django.urls import path, re_path, include
 from accounts.views import Aboutpageview
 from accounts import views
 from heart_disease_prediction import settings
@@ -25,10 +24,10 @@ from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    url(r'^$',views.user_login,name='user_login'),
-    url(r'^about/',Aboutpageview.as_view(),name='about'),
-    url(r'^accounts/',include('accounts.urls')),
-    url(r'^predict/',include('predict_risk.urls')),
+    re_path(r'^$',views.user_login,name='user_login'),
+    re_path(r'^about/',Aboutpageview.as_view(),name='about'),
+    re_path(r'^accounts/',include('accounts.urls')),
+    re_path(r'^predict/',include('predict_risk.urls')),
 ]
 
 

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-{% load staticfiles %}
+{% load static %}
 <html lang="en">
 <head>
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
@@ -33,8 +33,8 @@
     </nav>
     <div class="wrapper">
         <div class="page-header page-header-small" filter-color="orange" style="max-height: 100px;">
-            <div class="page-header-image" data-parallax="true" style="background-image: url('{% static 'img/image1.jpg' %}'); ">
-            </div>
+        <div class="page-header-image" data-parallax="true" style="background-image: url( 'images/image1.jpg' );">
+                </div>
             <div class="container">
                 <div class="content-center">
                     <div class="photo-container">
@@ -52,9 +52,10 @@
     <div class="section">
             <div class="container">
                 <div class="button-container">
-
-                        <i class="fa fa-github"></i>
-                    </a>
+    <!-- Example social button, add your own links as needed -->
+    <a href="https://github.com/" target="_blank" class="btn btn-neutral btn-icon btn-round btn-lg" title="GitHub">
+        <i class="fa fa-github"></i>
+    </a>
 
                 </div>
             </div>

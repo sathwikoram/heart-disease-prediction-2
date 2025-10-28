@@ -110,22 +110,21 @@ TIME_ZONE = 'UTC'
 
 USE_I18N = True
 
-USE_L10N = True
-
 USE_TZ = True
 
-LOGIN_URL='/'
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'  # Django 5.x best practice
+
+LOGIN_URL = '/'
 LOGIN_REDIRECT_URL = '/'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
-STATIC_DIR = os.path.join(BASE_DIR,'accounts/static')
+STATIC_DIR = os.path.join(BASE_DIR, 'accounts/static')
 STATICFILES_DIRS = [
     STATIC_DIR
 ]
 STATIC_URL = '/static/'
 
-#media
 MEDIA_DIR = os.path.join(BASE_DIR, "accounts/media")
 MEDIA_ROOT = MEDIA_DIR
 MEDIA_URL = '/media/'

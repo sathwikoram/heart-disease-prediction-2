@@ -1,6 +1,5 @@
 from django.db import models
 from django.contrib.auth.models import User
-from django.conf.urls import url
 from django.shortcuts import resolve_url
 
 

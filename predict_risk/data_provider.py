@@ -1,13 +1,13 @@
 import os
 import pickle
-from sklearn.externals import joblib
+import joblib
 
 config = {
     'heart': {
         'SVC': 'production/svc_model.pkl',
         'LogisticRegression': 'production/Logistic_regression_model.pkl',
         'NaiveBayes': 'production/naive_bayes_model.pkl',
-        'DecisionTree':'production/decision_tree_model.pkl',
+        'DecisionTree': 'production/decision_tree_model.pkl',
         'scalar_file': 'production/standard_scalar.pkl',
     }}
 
@@ -20,12 +20,19 @@ def GetJobLibFile(filepath):
         print("file does not exit")
 
 def GetPickleFile(filepath):
-    if os.path.isfile(os.path.join(dir, filepath)):
-        return pickle.load( open(os.path.join(dir, filepath), "rb" ) )
+    full_path = os.path.join(dir, filepath)
+    if os.path.isfile(full_path):
+        with open(full_path, "rb") as f:
+            return pickle.load(f)
+    else:
+        print(f"file does not exist: {full_path}")
     return None
 
 def GetStandardScalarForHeart():
-    return GetPickleFile(config['heart']['scalar_file'])
+    scalar = GetPickleFile(config['heart']['scalar_file'])
+    if scalar is None:
+        raise FileNotFoundError(f"StandardScaler file not found or could not be loaded: {os.path.join(dir, config['heart']['scalar_file'])}")
+    return scalar
 
 def GetAllClassifiersForHeart():
     return (GetSVCClassifierForHeart(),GetLogisticRegressionClassifierForHeart(),GetNaiveBayesClassifierForHeart(),GetDecisionTreeClassifierForHeart())
