@@ -13,3 +13,4 @@ six>=1.16.0
 whitenoise>=6.0.0
 psycopg2-binary>=2.9.0
 dj-database-url>=1.0.0
+gunicorn>=21.0.0
